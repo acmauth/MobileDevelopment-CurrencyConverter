@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageViewCurrencies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.3"
+        android:contentDescription="@string/curencies_image"
+        android:scaleType="matrix"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/currencies" />
+
     <EditText
         android:id="@+id/editTextEuros"
         android:layout_width="wrap_content"
@@ -15,6 +28,7 @@
         android:ems="10"
         android:hint="@string/euros_text"
         android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,32 +39,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:onClick="convertToDollars"
+        android:onClick="convertToSelectedCurrency"
         android:text="@string/convert_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDollars" />
-
-    <TextView
-        android:id="@+id/textViewDollars"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/amount_in_dollars_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEuros" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="378dp"
-        android:layout_height="185dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/dollars"
+    <TextView
+        android:id="@+id/textViewCurrencyConverted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/amount_in_currency_text"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonConvert"
-        app:layout_constraintVertical_bias="0.3"
-        app:srcCompat="@drawable/dollars" />
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <TextView
+        android:id="@+id/textViewSelectCurency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/select_currency_to_convert_to"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConvert" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectCurency" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
